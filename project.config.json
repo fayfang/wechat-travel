@@ -1,0 +1,13 @@
+{
+  "description": "fay mini program",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": false,
+    "minified": false
+  },
+  "compileType": "miniprogram",
+  "appid": "wxbf3a6fbd555ab2aa",
+  "projectname": "wechat-travel",
+  "miniprogramRoot": "./dist"
+}

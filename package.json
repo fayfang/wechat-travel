@@ -1,7 +1,7 @@
 {
-  "name": "test",
+  "name": "wechat-travel",
   "version": "0.0.2",
-  "description": "A WePY project",
+  "description": "fay mini program",
   "main": "dist/app.js",
   "scripts": {
     "dev": "wepy build --watch",
