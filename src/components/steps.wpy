@@ -1,0 +1,96 @@
+<template>
+  <view>
+    <block wx:for-items="{{steps}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+      <view class="step">
+        <view class="step__icon">
+          <view class="step__dot {{index > current? 'step__dot--todo' : ''}}"></view>
+          <view wx:if="{{index !== steps.length-1}}" class="step__line {{index < current? 'step__line--finish' : ''}} "></view>
+        </view>
+        <view class="step__content">
+          <view wx:if="{{item.time}}" class="step__title {{index > current? 'step__title--todo' : ''}}">{{item.time}}</view>
+          <view wx:if="{{item.title}}" class="step__desc">{{item.title}}</view>
+          <view wx:if="{{item.location}}" class="step__desc">地点：{{item.location}}</view>
+          <view wx:if="{{item.phone}}" class="step__desc">电话：{{item.phone}}</view>
+          <view wx:if="{{item.remark}}" class="step__desc">备注：{{item.remark}}</view>
+          <view wx:if="{{item.more}}" class="step__desc">更多：{{item.more}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Steps extends wepy.component {
+    props = {
+      steps: {
+        type: Array,
+        default: {}
+      },
+      current: {
+        type: Number,
+        default: 0
+      }
+    }
+    methods = {
+      tap () {
+        this.grouplist.name = `Parent Random(${Math.random()})`
+        console.log(`Clicked Group ${this.$index}, ID is ${this.grouplist.id}`)
+      }
+    }
+  }
+</script>
+
+<style type="less">
+.step {
+    display: flex;
+    background: #fff
+}
+.step__icon {
+    color: #52c41a;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 15rpx
+}
+.step__dot {
+    width: 14rpx;
+    height: 14rpx;
+    border-radius: 50%;
+    background: #fff;
+    border: 1rpx solid #52c41a
+}
+.step__dot--todo {
+    border-color: #ddd
+}
+.step__line {
+    flex: 1;
+    width: 1rpx;
+    height: 100%;
+    background: #ddd
+}
+.step__line--finish {
+    background: #52c41a
+}
+.step__content {
+    margin-bottom:32rpx
+}
+.step__desc {
+    line-height:32rpx;
+    font-size: 28rpx;
+    color: #333;
+    background: #fff;
+    padding-right: 1rpx;
+}
+.step__title {
+    font-size: 24rpx;
+    color: #52c41a;
+    line-height:23rpx;
+    margin-bottom: 10rpx;
+    &.step__title--todo {
+      color: #999;
+    }
+}
+</style>
